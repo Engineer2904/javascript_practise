@@ -65,6 +65,28 @@
                         return true;
                     }
                 }
+                //Traversing the binary search tree
+                this.preorder = (node=root)=>{
+                    if(node!=null){
+                        console.log(node.value);
+                        this.preorder(node.left);
+                        this.preorder(node.right);
+                    }
+                }
+                this.inorder = (node=root)=>{
+                    if(node!=null){
+                        this.inorder(node.left);
+                        console.log(node.value);
+                        this.inorder(node.right);
+                    }
+                }
+                this.postorder = (node=root)=>{
+                    if(node!=null){
+                        this.postorder(node.left);
+                        this.postorder(node.right);
+                        console.log(node.value);
+                    }
+                }
                 
                
         
@@ -75,9 +97,18 @@
          tree.insertnode(10);
          tree.insertnode(40);
          tree.insertnode(5);  
+         console.log("Minimum in bst")
          console.log(tree.min());
+         console.log("Maximum in bst")
          console.log(tree.max());    
+         console.log("If element is present in tree?")
          console.log(tree.search(20));
+         console.log("******Pre-order*********")
+         console.log(tree.preorder());
+         console.log("******In-order*********")
+         console.log(tree.inorder());
+         console.log("******Post-order*********")
+         console.log(tree.postorder());
     </script>
 </body>
 </html>
