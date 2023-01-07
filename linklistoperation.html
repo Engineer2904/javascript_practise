@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         class node{
+           constructor(value)//value is argument
+           {
+            this.value= value;
+            this.next=null;//name of pointer is next
+           }
+        }
+        class link_list{
+            constructor(value){
+                this.head={
+                    value:value,
+                    next: null
+                }
+                this.tail=this.head;
+                this.length=1;
+            }
+            append(value){
+
+                var node_list= new node(value)
+                if(this.head==null){
+                    this.head= Node;//not getting
+                }
+                else{
+                        this.tail.next = node_list;
+                        this.tail=node_list;
+                        this.length++
+                }
+            }
+        print_list(){
+        var arr=[];
+        let  currentvalue = this.head;
+        while(currentvalue!==null){
+            arr.push(currentvalue.value);
+            currentvalue=currentvalue.next;
+           
+        }
+        console.log(arr);
+        }
+        prepend(value){   // to add a node at starting 
+            var newnode= new node(value)
+            newnode.next=this.head;
+            this.head=newnode;
+            this.length++;
+            return this
+
+        }
+        insert(value,index){// to add in middle
+            var x = new node(value);
+            let i=1;    
+            let previousnode= this.head; 
+            while(i<index){ //used for traversing in linked list
+                previousnode= previousnode.next;
+                i++;
+            }
+            x.next=previousnode.next;
+            previousnode.next=x;
+            return this;
+        }
+        search(value){ // to search if the value is present in the link list or not
+    let currentHead= this.head
+    while (currentHead !== null){
+        if (currentHead.value == value)return true;
+        currentHead=currentHead.next
+    }
+    return false
+  }
+
+  delete_head(){//removing the firt node
+    this.head = this.head.next;
+    this.lenght--;
+    return this;
+
+  }
+  delete_tail(){//removing last node
+    var previous = this.head;
+    while(previous.next.next!==null){
+        previous = previous.next;
+    }
+        previous.next=null;
+        this.length--;
+        return this;
+  }
+//   delete_by_index(index){var i=0;
+//     if(index==0){
+//         // delete_head();
+//         this.head = this.head.next;
+//     }
+//     var previous=this.head;
+//     while(i<index){
+//                 previous = previous.next;
+//                  // previous.next=previous.next.next;
+//                 i++;}
+//     previous.next=previous.next.next;
+//     this.length--;
+//     return this;
+//   }
+deleteAtIndex(index){
+       if(index === 0){
+        this.head = this.head.next;
+        this.length--;
+        return this;
+       }
+    let count = 1;
+    let previousNode = this.head;
+    while(count < index){
+        previousNode = previousNode.next;
+        count++;
+    }
+    previousNode.next = previousNode.next.next;
+    this.length--;
+    return this;
+    }
+
+}
+
+        
+
+        var obj1= new link_list(1000)
+        obj1.append(1001);
+
+        obj1.append(1006);
+        obj1.prepend(999);
+        obj1.insert(33,1);
+        obj1.insert(980,3);
+        // obj1.append(1002);
+        // console.log(obj1);
+        console.log(obj1.search(999));
+        obj1.print_list();
+        obj1.delete_head();
+     
+        obj1.print_list();
+        obj1.delete_tail();
+        obj1.print_list();
+        // obj1.append(1005);
+        // obj1.print_list();
+        obj1.deleteAtIndex(3);
+        obj1.print_list();
+    </script>
+</body>
+</html>

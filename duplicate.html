@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var array=[3,7,7,1,2,5,2,3,16,16];
+        var new_array=[];
+        array.sort();
+        // console.log(sorted)
+         for (var i =0;i<array.length;i++) //o(n)
+        {
+            if(array[i]==array[i+1]){
+                new_array.push(array[i]);
+            }
+        }
+        console.log(new_array);
+            
+        
+        
+
+    </script>
+</body>
+</html>
