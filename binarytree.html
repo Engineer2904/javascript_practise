@@ -50,12 +50,25 @@
                     node = node.right;
                 }
                         return node.value;}
-
+                //searching element in tree
+                     this.search=(value,node=root)=>{
+                    if(node==null){
+                        return false;
+                    }
+                    if(value<node.value){
+                        return this.search(value,node.left);
+                    }
+                    if(value>node.value) {
+                        return this.search(value,node.right);  
+                    }
+                    else{
+                        return true;
+                    }
+                }
+                
+               
         
          }
-
-
-
          const tree= new bst();
          tree.insertnode (20);
          tree.insertnode(50);       
@@ -64,6 +77,7 @@
          tree.insertnode(5);  
          console.log(tree.min());
          console.log(tree.max());    
+         console.log(tree.search(20));
     </script>
 </body>
 </html>
